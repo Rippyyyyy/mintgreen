@@ -43,7 +43,7 @@ class ImageObject extends Connection {
 
     public function queryDatabase(string $uuid):array {
         $query_prepared = $this->connection->stmt_init();
-        if ($query_prepared->prepare('SELECT file_path FROM ' . MYSQL_IMG_TABLE . ' WHERE sha1 = ? LIMIT 1;')) {
+        if ($query_prepared->prepare('SELECT file_path FROM ' . MYSQL_IMG_TABLE . ' WHERE uuid = ? LIMIT 1;')) {
             $query_prepared->bind_param('s', $uuid);
             $query_prepared->execute();
             $query_prepared->bind_result($filepath);
